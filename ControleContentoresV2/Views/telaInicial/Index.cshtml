@@ -1,0 +1,73 @@
+﻿@model IEnumerable<ControleContentoresV2.Models.movimentacao>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Panorama de contentores a bordo</h2>
+
+<div class="row " style="border: 1px double; text-align: center; display: contents; justify-content:  space-around ;">
+
+    @{
+        if (Model != null)
+        {
+
+
+            foreach (var mov in Model)
+            {
+                if (mov.idSituacao == 1 || mov.idSituacao == 2)
+                {
+
+                    <div class="col col-md-2" style=" border: 2px double; height: 240px; width: 170px; margin: 5px; border-radius: 15px; ">
+                        
+                        <div style="height: 80px; font-size: 20px; padding: 10px;">
+                            <p>@mov.produtoQuimico.nomeProduto.ToString()</p>
+                        </div>
+                        <div style="height: 40px; padding: 10px">
+                            <p>@mov.id_embalagem</p>
+                        </div>
+                        <div style="height: 40px; padding: 10px">
+                            <p>@mov.dt_load.ToShortDateString()</p>
+                        </div>
+
+
+                        @if (mov.situacao.situacao1 == "CHEIO")
+                        {
+                            <div style="background-color: green; padding: 10px; color: white; height: 40px; padding-top: 0; position: relative">
+                                <p style="padding: 8px; font-size: 16px;">CHEIO</p>
+                            </div>
+                            <div style="padding: 8px">
+                                @Html.ActionLink(" ", "../EsgotarContentor/Edit", new { id = mov.id }, new { @class = "glyphicon glyphicon-ban-circle", style = "color: white; margin: 0 8px 0 8px;", title = "Esgotar refil" })
+                            </div>
+
+                        }
+                        else
+                        {
+                            if (mov.situacao.situacao1 == "VAZIO")
+                            {
+                                <div style="background-color: red; padding: 10px; color: white; height: 40px; padding-top: 0; position: relative">
+                                    <p style="padding: 8px; font-size: 16px;">VAZIO</p>
+                                </div>
+                                <div style="padding: 8px">
+                                    @Html.ActionLink(" ", "../RetornoContentor/Edit", new { id = mov.id }, new { @class = "glyphicon glyphicon-log-out", style = "color: white; margin: 0 8px 0 8px;", title = "Devolver refil" })
+                                </div>
+
+                            }
+
+                        }
+
+
+
+                    </div>
+                    }
+                }
+            }
+        else
+        {
+        <div style="text-align: center;">
+            <h3>Não há nenhuma lista disponível</h3>
+        </div>
+        }
+    }
+</div>

@@ -1,0 +1,123 @@
+﻿@model ControleContentoresV2.Models.movimentacao
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>movimentacao</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id)
+    
+               <div class="form-group" style="display:none;">
+                   @Html.LabelFor(model => model.rt_load, htmlAttributes: new { @class = "control-label col-md-2" })
+                   <div class="col-md-10">
+                       @Html.EditorFor(model => model.rt_load, new { htmlAttributes = new { @class = "form-control" } })
+                       @Html.ValidationMessageFor(model => model.rt_load, "", new { @class = "text-danger" })
+                   </div>
+               </div>
+
+               <div class="form-group" style="display:none;">
+                   @Html.Label("DATA DE LOAD", htmlAttributes: new { @class = "control-label col-md-2" })
+                   <div class="col-md-10">
+                       @Html.EditorFor(model => model.dt_load , new { htmlAttributes = new { @class = "form-control", type= "date", Value = Model.dt_load.ToString("yyyy-MM-dd") } })
+                       @Html.ValidationMessageFor(model => model.dt_load, "", new { @class = "text-danger" })
+                   </div>
+               </div>
+
+               <div class="form-group" style="display:none;">
+                   @Html.LabelFor(model => model.idProduto, "idProduto", htmlAttributes: new { @class = "control-label col-md-2" })
+                   <div class="col-md-10">
+                       @Html.DropDownList("idProduto", null, htmlAttributes: new { @class = "form-control" })
+                       @Html.ValidationMessageFor(model => model.idProduto, "", new { @class = "text-danger" })
+                   </div>
+               </div>
+
+               <div class="form-group" style="display:none;">
+                   @Html.LabelFor(model => model.idVolume, "idVolume", htmlAttributes: new { @class = "control-label col-md-2" })
+                   <div class="col-md-10">
+                       @Html.DropDownList("idVolume", null, htmlAttributes: new { @class = "form-control" })
+                       @Html.ValidationMessageFor(model => model.idVolume, "", new { @class = "text-danger" })
+                   </div>
+               </div>
+
+               <div class="form-group" style="display:none;">
+                   @Html.LabelFor(model => model.id_embalagem, htmlAttributes: new { @class = "control-label col-md-2" })
+                   <div class="col-md-10">
+                       @Html.EditorFor(model => model.id_embalagem, new { htmlAttributes = new { @class = "form-control" } })
+                       @Html.ValidationMessageFor(model => model.id_embalagem, "", new { @class = "text-danger" })
+                   </div>
+               </div>
+
+       <div class="form-group" >
+           @Html.LabelFor(model => model.idSituacao, "idSituacao", htmlAttributes: new { @class = "control-label col-md-2" })
+           <div class="col-md-10">
+               @Html.DropDownList("idSituacao", null, htmlAttributes: new { @class = "form-control", Value = "VAZIO" })
+               @Html.ValidationMessageFor(model => model.idSituacao, "", new { @class = "text-danger" })
+           </div>
+       </div>
+    
+    <div class="form-group">
+        @Html.Label("DATA DE USO", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @if (Model.dt_uso != null)                
+            {
+                @Html.EditorFor(model => model.dt_uso, new { htmlAttributes = new { @class = "form-control", type = "date", Value = Model.dt_uso.ToString().AsDateTime().ToString("yyyy-MM-dd") } })
+            }
+            else
+            {               
+                @Html.EditorFor(model => model.dt_uso, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+            }
+
+            @Html.ValidationMessageFor(model => model.dt_uso, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+        <div class="form-group" style="display:none;">
+            @Html.LabelFor(model => model.rt_backload, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.rt_backload, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.rt_backload, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="display:none;">
+            @Html.LabelFor(model => model.dt_backload, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.dt_backload, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.dt_backload, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="display:none;">
+            @Html.LabelFor(model => model.comentario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.comentario, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.comentario, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

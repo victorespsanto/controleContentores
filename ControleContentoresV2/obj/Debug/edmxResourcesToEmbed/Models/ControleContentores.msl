@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ControleContentoresModelStoreContainer" CdmEntityContainer="ControleContentoresEntities">
+    <EntitySetMapping Name="funcaoProduto">
+      <EntityTypeMapping TypeName="ControleContentoresModel.funcaoProduto">
+        <MappingFragment StoreEntitySet="funcaoProduto">
+          <ScalarProperty Name="funcaoProduto1" ColumnName="funcaoProduto" />
+          <ScalarProperty Name="idFuncaoProduto" ColumnName="idFuncaoProduto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="movimentacao">
+      <EntityTypeMapping TypeName="ControleContentoresModel.movimentacao">
+        <MappingFragment StoreEntitySet="movimentacao">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="rt_load" ColumnName="rt_load" />
+          <ScalarProperty Name="dt_load" ColumnName="dt_load" />
+          <ScalarProperty Name="idProduto" ColumnName="idProduto" />
+          <ScalarProperty Name="idVolume" ColumnName="idVolume" />
+          <ScalarProperty Name="id_embalagem" ColumnName="id_embalagem" />
+          <ScalarProperty Name="idSituacao" ColumnName="idSituacao" />
+          <ScalarProperty Name="dt_uso" ColumnName="dt_uso" />
+          <ScalarProperty Name="rt_backload" ColumnName="rt_backload" />
+          <ScalarProperty Name="dt_backload" ColumnName="dt_backload" />
+          <ScalarProperty Name="comentario" ColumnName="comentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="perfilUsuario">
+      <EntityTypeMapping TypeName="ControleContentoresModel.perfilUsuario">
+        <MappingFragment StoreEntitySet="perfilUsuario">
+          <ScalarProperty Name="idPerfilUsuario" ColumnName="idPerfilUsuario" />
+          <ScalarProperty Name="tipoPerfil" ColumnName="tipoPerfil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="produtoQuimico">
+      <EntityTypeMapping TypeName="ControleContentoresModel.produtoQuimico">
+        <MappingFragment StoreEntitySet="produtoQuimico">
+          <ScalarProperty Name="nmProduto" ColumnName="nmProduto" />
+          <ScalarProperty Name="nomeProduto" ColumnName="nomeProduto" />
+          <ScalarProperty Name="idFuncaoProduto" ColumnName="idFuncaoProduto" />
+          <ScalarProperty Name="idStatus" ColumnName="idStatus" />
+          <ScalarProperty Name="idProduto" ColumnName="idProduto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="situacao">
+      <EntityTypeMapping TypeName="ControleContentoresModel.situacao">
+        <MappingFragment StoreEntitySet="situacao">
+          <ScalarProperty Name="idSituacao" ColumnName="idSituacao" />
+          <ScalarProperty Name="situacao1" ColumnName="situacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="status">
+      <EntityTypeMapping TypeName="ControleContentoresModel.status">
+        <MappingFragment StoreEntitySet="status">
+          <ScalarProperty Name="idStatus" ColumnName="idStatus" />
+          <ScalarProperty Name="status1" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="ControleContentoresModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="nomeUsuario" ColumnName="nomeUsuario" />
+          <ScalarProperty Name="senhaUsuario" ColumnName="senhaUsuario" />
+          <ScalarProperty Name="idPerfilUsuario" ColumnName="idPerfilUsuario" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="chaveUsuario" ColumnName="chaveUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="volume">
+      <EntityTypeMapping TypeName="ControleContentoresModel.volume">
+        <MappingFragment StoreEntitySet="volume">
+          <ScalarProperty Name="idVolume" ColumnName="idVolume" />
+          <ScalarProperty Name="qtdeVolume" ColumnName="qtdeVolume" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

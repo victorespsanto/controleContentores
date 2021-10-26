@@ -1,0 +1,88 @@
+﻿@model IEnumerable<ControleContentoresV2.Models.movimentacao>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.rt_load)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dt_load)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_embalagem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dt_uso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rt_backload)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dt_backload)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.comentario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.produtoQuimico.nomeProduto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.situacao.situacao1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volume.idVolume)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.rt_load)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dt_load)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_embalagem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dt_uso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rt_backload)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dt_backload)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.comentario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.produtoQuimico.nomeProduto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.situacao.situacao1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volume.idVolume)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

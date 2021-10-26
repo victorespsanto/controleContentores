@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eb130fbb17e949f4af1309cd8d00851b" Name="Diagram1">
+        <EntityTypeShape EntityType="ControleContentoresModel.funcaoProduto" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControleContentoresModel.movimentacao" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControleContentoresModel.perfilUsuario" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControleContentoresModel.produtoQuimico" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControleContentoresModel.situacao" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControleContentoresModel.status" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControleContentoresModel.usuario" Width="1.5" PointX="8" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControleContentoresModel.volume" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ControleContentoresModel.FK__produtoQu__idFun__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="ControleContentoresModel.FK__movimenta__idPro__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="ControleContentoresModel.FK__movimenta__idSit__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="ControleContentoresModel.FK__movimenta__idVol__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="ControleContentoresModel.FK__usuario__idPerfi__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="ControleContentoresModel.FK__produtoQu__idSta__2A4B4B5E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

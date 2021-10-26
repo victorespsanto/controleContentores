@@ -1,0 +1,51 @@
+﻿@model ControleContentoresV2.Models.produtoQuimico
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>produtoQuimico</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nmProduto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nmProduto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nomeProduto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomeProduto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.funcaoProduto.funcaoProduto1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.funcaoProduto.funcaoProduto1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status.status1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status.status1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idProduto }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

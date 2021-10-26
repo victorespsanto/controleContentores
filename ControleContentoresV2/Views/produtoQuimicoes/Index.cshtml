@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ControleContentoresV2.Models.produtoQuimico>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nmProduto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomeProduto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.funcaoProduto.funcaoProduto1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status.status1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) 
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nmProduto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomeProduto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.funcaoProduto.funcaoProduto1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status.status1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idProduto }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idProduto }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idProduto })
+        </td>
+    </tr>
+}
+
+</table>

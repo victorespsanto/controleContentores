@@ -1,0 +1,85 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Controle de Chaves</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/Scrips/js")
+        <style>
+            ul#line li {
+                display: inline;
+            }
+        </style>
+    </head>
+    <body style="background-image: url(../../Content/img/BR.png); ">
+        <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: darkblue; font-weight: bolder;">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                    @if (Session["Autorizado"] == null)
+                    {
+                        @Html.ActionLink("P-25 - CONTROLE DE CONTENTORES E REFIS", "Index", "Login", new { area = "" }, new { @class = "navbar-brand", style = "color: white" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("P-25 - CONTROLE DE CONTENTORES E REFIS", "Index", "telaInicial", new { area = "" }, new { @class = "navbar-brand", style = "color: white" })
+
+
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" id="line" style="display: inline">
+
+                            <li>@Html.ActionLink(" ", "Index", "telaInicial", new { area = "" }, new { @class = "glyphicon glyphicon-home", style = "color: white;", title = "Votar para tela de panorama de contentores" })</li>
+
+                               <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros<span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>@Html.ActionLink("Embarques", "Create", "movimentacaos", null, new { @style = "background-color: midnightblue; color: white; margin-top: 4px; " })</li>
+                                        <li>@Html.ActionLink("Consulta de contentores", "Index", "ConsultaContentor", null, new { @style = "background-color: midnightblue; color: white; margin-top: 4px" })</li>
+                                        @if (Session["PerfilUsuario"].ToString() == "ADMINISTRADOR")
+                                        {
+                                            <li>@Html.ActionLink("Produtos Químicos", "Index", "produtoQuimicoes", null, new { @style = "background-color: midnightblue; color: white; margin-top: 4px" })</li>
+                                            <li>@Html.ActionLink("Usuário", "Index", "usuarios", null, new { @style = "background-color: midnightblue; color: white; margin-top: 4px" })</li>
+                                            <li>@Html.ActionLink("Situação do Contentor", "Index", "situacaos", null, new { @style = "background-color: midnightblue; color: white; margin-top: 4px" })</li>
+                                            <li>@Html.ActionLink("Status do produto", "Index", "status", null, new { @style = "background-color: midnightblue; color: white; margin-top: 4px" })</li>
+                                            <li>@Html.ActionLink("Perfil do Usuário", "Index", "perfilUsuarios", null, new { @style = "background-color: midnightblue; color: white; margin-top: 4px" })</li>
+                                            <li>@Html.ActionLink("Volumes das Embalagens", "Index", "volumes", null, new { @style = "background-color: midnightblue; color: white; margin-top: 4px" })</li>
+                                            <li>@Html.ActionLink("Função química", "Index", "funcaoProdutoes", null, new { @style = "background-color: midnightblue; color: white; margin-top: 4px" })</li>
+                                            
+                                        }
+                                    </ul>
+                                </li>
+                            
+
+                            <li style="margin: 14px 0 0 40px; font-size: 16px; color: white; text-transform: uppercase;">Olá, @Session["Nome"] &nbsp&nbsp  -  &nbsp&nbsp    @Session["PerfilUsuario"]</li>
+                            <li>@Html.ActionLink("Sair", "Index", "Sair", null, new { @style = "color: white; float: right" })</li>
+
+                        }
+
+                    </ul>
+
+                </div>
+                    }
+            </div>
+        </div>
+        <div class="container body-content" style="background-color: mediumblue; color: white; border-radius: 0  0 20px 20px;">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Direitos Reservados by Victor Ribeiro</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

@@ -1,0 +1,11 @@
+﻿
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@foreach (var movimentacao in Model)
+{
+    <h3>Produto: @movimentacao.produtoQuimico.nomeProduto.ToString()</h3>
+}

@@ -1,0 +1,99 @@
+﻿@model ControleContentoresV2.Models.movimentacao
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>movimentacao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.rt_load)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rt_load)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_load)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_load)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_embalagem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_embalagem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_uso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_uso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rt_backload)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rt_backload)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_backload)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_backload)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.comentario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comentario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.produtoQuimico.nomeProduto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.produtoQuimico.nomeProduto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.situacao.situacao1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.situacao.situacao1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volume.idVolume)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volume.idVolume)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

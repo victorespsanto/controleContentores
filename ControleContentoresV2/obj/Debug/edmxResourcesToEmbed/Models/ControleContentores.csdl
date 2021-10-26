@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ControleContentoresModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="funcaoProduto">
+    <Key>
+      <PropertyRef Name="idFuncaoProduto" />
+    </Key>
+    <Property Name="funcaoProduto1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idFuncaoProduto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="produtoQuimico" Relationship="Self.FK__produtoQu__idFun__29572725" FromRole="funcaoProduto" ToRole="produtoQuimico" />
+  </EntityType>
+  <EntityType Name="movimentacao">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rt_load" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dt_load" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="idProduto" Type="Int32" Nullable="false" />
+    <Property Name="idVolume" Type="Int32" Nullable="false" />
+    <Property Name="id_embalagem" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idSituacao" Type="Int32" Nullable="false" />
+    <Property Name="dt_uso" Type="DateTime" Precision="0" />
+    <Property Name="rt_backload" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="dt_backload" Type="DateTime" Precision="0" />
+    <Property Name="comentario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="produtoQuimico" Relationship="Self.FK__movimenta__idPro__267ABA7A" FromRole="movimentacao" ToRole="produtoQuimico" />
+    <NavigationProperty Name="situacao" Relationship="Self.FK__movimenta__idSit__286302EC" FromRole="movimentacao" ToRole="situacao" />
+    <NavigationProperty Name="volume" Relationship="Self.FK__movimenta__idVol__276EDEB3" FromRole="movimentacao" ToRole="volume" />
+  </EntityType>
+  <EntityType Name="perfilUsuario">
+    <Key>
+      <PropertyRef Name="idPerfilUsuario" />
+    </Key>
+    <Property Name="idPerfilUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipoPerfil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="usuario" Relationship="Self.FK__usuario__idPerfi__25869641" FromRole="perfilUsuario" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="produtoQuimico">
+    <Key>
+      <PropertyRef Name="idProduto" />
+    </Key>
+    <Property Name="nmProduto" Type="Int32" Nullable="false" />
+    <Property Name="nomeProduto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idFuncaoProduto" Type="Int32" Nullable="false" />
+    <Property Name="idStatus" Type="Int32" Nullable="false" />
+    <Property Name="idProduto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="funcaoProduto" Relationship="Self.FK__produtoQu__idFun__29572725" FromRole="produtoQuimico" ToRole="funcaoProduto" />
+    <NavigationProperty Name="movimentacao" Relationship="Self.FK__movimenta__idPro__267ABA7A" FromRole="produtoQuimico" ToRole="movimentacao" />
+    <NavigationProperty Name="status" Relationship="Self.FK__produtoQu__idSta__2A4B4B5E" FromRole="produtoQuimico" ToRole="status" />
+  </EntityType>
+  <EntityType Name="situacao">
+    <Key>
+      <PropertyRef Name="idSituacao" />
+    </Key>
+    <Property Name="idSituacao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="situacao1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="movimentacao" Relationship="Self.FK__movimenta__idSit__286302EC" FromRole="situacao" ToRole="movimentacao" />
+  </EntityType>
+  <EntityType Name="status">
+    <Key>
+      <PropertyRef Name="idStatus" />
+    </Key>
+    <Property Name="idStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="produtoQuimico" Relationship="Self.FK__produtoQu__idSta__2A4B4B5E" FromRole="status" ToRole="produtoQuimico" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="nomeUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="senhaUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idPerfilUsuario" Type="Int32" Nullable="false" />
+    <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="chaveUsuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="perfilUsuario" Relationship="Self.FK__usuario__idPerfi__25869641" FromRole="usuario" ToRole="perfilUsuario" />
+  </EntityType>
+  <EntityType Name="volume">
+    <Key>
+      <PropertyRef Name="idVolume" />
+    </Key>
+    <Property Name="idVolume" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="qtdeVolume" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="movimentacao" Relationship="Self.FK__movimenta__idVol__276EDEB3" FromRole="volume" ToRole="movimentacao" />
+  </EntityType>
+  <Association Name="FK__produtoQu__idFun__29572725">
+    <End Role="funcaoProduto" Type="Self.funcaoProduto" Multiplicity="1" />
+    <End Role="produtoQuimico" Type="Self.produtoQuimico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="funcaoProduto">
+        <PropertyRef Name="idFuncaoProduto" />
+      </Principal>
+      <Dependent Role="produtoQuimico">
+        <PropertyRef Name="idFuncaoProduto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__movimenta__idPro__267ABA7A">
+    <End Role="produtoQuimico" Type="Self.produtoQuimico" Multiplicity="1" />
+    <End Role="movimentacao" Type="Self.movimentacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produtoQuimico">
+        <PropertyRef Name="idProduto" />
+      </Principal>
+      <Dependent Role="movimentacao">
+        <PropertyRef Name="idProduto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__movimenta__idSit__286302EC">
+    <End Role="situacao" Type="Self.situacao" Multiplicity="1" />
+    <End Role="movimentacao" Type="Self.movimentacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="situacao">
+        <PropertyRef Name="idSituacao" />
+      </Principal>
+      <Dependent Role="movimentacao">
+        <PropertyRef Name="idSituacao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__movimenta__idVol__276EDEB3">
+    <End Role="volume" Type="Self.volume" Multiplicity="1" />
+    <End Role="movimentacao" Type="Self.movimentacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="volume">
+        <PropertyRef Name="idVolume" />
+      </Principal>
+      <Dependent Role="movimentacao">
+        <PropertyRef Name="idVolume" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__usuario__idPerfi__25869641">
+    <End Role="perfilUsuario" Type="Self.perfilUsuario" Multiplicity="1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfilUsuario">
+        <PropertyRef Name="idPerfilUsuario" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="idPerfilUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__produtoQu__idSta__2A4B4B5E">
+    <End Role="status" Type="Self.status" Multiplicity="1" />
+    <End Role="produtoQuimico" Type="Self.produtoQuimico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="idStatus" />
+      </Principal>
+      <Dependent Role="produtoQuimico">
+        <PropertyRef Name="idStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ControleContentoresEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="funcaoProduto" EntityType="Self.funcaoProduto" />
+    <EntitySet Name="movimentacao" EntityType="Self.movimentacao" />
+    <EntitySet Name="perfilUsuario" EntityType="Self.perfilUsuario" />
+    <EntitySet Name="produtoQuimico" EntityType="Self.produtoQuimico" />
+    <EntitySet Name="situacao" EntityType="Self.situacao" />
+    <EntitySet Name="status" EntityType="Self.status" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" />
+    <EntitySet Name="volume" EntityType="Self.volume" />
+    <AssociationSet Name="FK__produtoQu__idFun__29572725" Association="Self.FK__produtoQu__idFun__29572725">
+      <End Role="funcaoProduto" EntitySet="funcaoProduto" />
+      <End Role="produtoQuimico" EntitySet="produtoQuimico" />
+    </AssociationSet>
+    <AssociationSet Name="FK__movimenta__idPro__267ABA7A" Association="Self.FK__movimenta__idPro__267ABA7A">
+      <End Role="produtoQuimico" EntitySet="produtoQuimico" />
+      <End Role="movimentacao" EntitySet="movimentacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__movimenta__idSit__286302EC" Association="Self.FK__movimenta__idSit__286302EC">
+      <End Role="situacao" EntitySet="situacao" />
+      <End Role="movimentacao" EntitySet="movimentacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__movimenta__idVol__276EDEB3" Association="Self.FK__movimenta__idVol__276EDEB3">
+      <End Role="volume" EntitySet="volume" />
+      <End Role="movimentacao" EntitySet="movimentacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__usuario__idPerfi__25869641" Association="Self.FK__usuario__idPerfi__25869641">
+      <End Role="perfilUsuario" EntitySet="perfilUsuario" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__produtoQu__idSta__2A4B4B5E" Association="Self.FK__produtoQu__idSta__2A4B4B5E">
+      <End Role="status" EntitySet="status" />
+      <End Role="produtoQuimico" EntitySet="produtoQuimico" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

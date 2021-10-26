@@ -1,0 +1,34 @@
+﻿@model IEnumerable<ControleContentoresV2.Models.perfilUsuario>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tipoPerfil)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoPerfil)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idPerfilUsuario }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idPerfilUsuario }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idPerfilUsuario })
+        </td>
+    </tr>
+}
+
+</table>
