@@ -10,18 +10,18 @@ using ControleContentoresV2.Models;
 
 namespace ControleContentoresV2.Controllers
 {
-    public class movimentacaosController : Controller
+    public class EmprestarContentorController : Controller
     {
         private ControleContentoresEntities db = new ControleContentoresEntities();
 
-        // GET: movimentacaos
+        // GET: EmprestarContentor
         public ActionResult Index()
         {
-            var movimentacao = db.movimentacao.Include(m => m.produtoQuimico).Include(m => m.situacao).Include(m => m.volume).OrderBy(m => m.dt_load);
-            return PartialView(movimentacao.ToList());
+            var movimentacao = db.movimentacao.Include(m => m.produtoQuimico).Include(m => m.situacao).Include(m => m.volume);
+            return View(movimentacao.ToList());
         }
 
-        // GET: movimentacaos/Details/5
+        // GET: EmprestarContentor/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,18 +36,18 @@ namespace ControleContentoresV2.Controllers
             return View(movimentacao);
         }
 
-        // GET: movimentacaos/Create
+        // GET: EmprestarContentor/Create
         public ActionResult Create()
         {
-            ViewBag.idProduto = new SelectList(db.produtoQuimico.OrderBy(p => p.nomeProduto).Where(p => p.idStatus == 1), "idProduto", "nomeProduto");
+            ViewBag.idProduto = new SelectList(db.produtoQuimico, "idProduto", "nomeProduto");
             ViewBag.idSituacao = new SelectList(db.situacao, "idSituacao", "situacao1");
-            ViewBag.idVolume = new SelectList(db.volume, "idVolume", "qtdeVolume");
+            ViewBag.idVolume = new SelectList(db.volume, "idVolume", "idVolume");
             return View();
         }
 
-        // POST: movimentacaos/Create
-        // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
-        // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: EmprestarContentor/Create
+        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
+        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,rt_load,dt_load,idProduto,idVolume,id_embalagem,idSituacao,dt_uso,rt_backload,dt_backload,comentario")] movimentacao movimentacao)
@@ -56,16 +56,16 @@ namespace ControleContentoresV2.Controllers
             {
                 db.movimentacao.Add(movimentacao);
                 db.SaveChanges();
-                return RedirectToAction("Create");
+                return RedirectToAction("Index");
             }
 
             ViewBag.idProduto = new SelectList(db.produtoQuimico, "idProduto", "nomeProduto", movimentacao.idProduto);
             ViewBag.idSituacao = new SelectList(db.situacao, "idSituacao", "situacao1", movimentacao.idSituacao);
-            ViewBag.idVolume = new SelectList(db.volume, "idVolume", "qtdeVolume", movimentacao.idVolume);
+            ViewBag.idVolume = new SelectList(db.volume, "idVolume", "idVolume", movimentacao.idVolume);
             return View(movimentacao);
         }
 
-        // GET: movimentacaos/Edit/5
+        // GET: EmprestarContentor/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,13 +79,13 @@ namespace ControleContentoresV2.Controllers
             }
             ViewBag.idProduto = new SelectList(db.produtoQuimico, "idProduto", "nomeProduto", movimentacao.idProduto);
             ViewBag.idSituacao = new SelectList(db.situacao, "idSituacao", "situacao1", movimentacao.idSituacao);
-            ViewBag.idVolume = new SelectList(db.volume, "idVolume", "qtdeVolume", movimentacao.idVolume);
+            ViewBag.idVolume = new SelectList(db.volume, "idVolume", "idVolume", movimentacao.idVolume);
             return View(movimentacao);
         }
 
-        // POST: movimentacaos/Edit/5
-        // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
-        // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: EmprestarContentor/Edit/5
+        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
+        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,rt_load,dt_load,idProduto,idVolume,id_embalagem,idSituacao,dt_uso,rt_backload,dt_backload,comentario")] movimentacao movimentacao)
@@ -94,15 +94,15 @@ namespace ControleContentoresV2.Controllers
             {
                 db.Entry(movimentacao).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Create");
+                return RedirectToAction("../Views/telaInicial");
             }
             ViewBag.idProduto = new SelectList(db.produtoQuimico, "idProduto", "nomeProduto", movimentacao.idProduto);
             ViewBag.idSituacao = new SelectList(db.situacao, "idSituacao", "situacao1", movimentacao.idSituacao);
-            ViewBag.idVolume = new SelectList(db.volume, "idVolume", "qtdeVolume", movimentacao.idVolume);
+            ViewBag.idVolume = new SelectList(db.volume, "idVolume", "idVolume", movimentacao.idVolume);
             return View(movimentacao);
         }
 
-        // GET: movimentacaos/Delete/5
+        // GET: EmprestarContentor/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -117,7 +117,7 @@ namespace ControleContentoresV2.Controllers
             return View(movimentacao);
         }
 
-        // POST: movimentacaos/Delete/5
+        // POST: EmprestarContentor/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

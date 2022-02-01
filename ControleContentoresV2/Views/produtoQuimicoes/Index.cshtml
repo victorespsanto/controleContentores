@@ -5,24 +5,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Produtos Químicos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Adicionar Novo Produto", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.nmProduto)
+            @Html.DisplayName("NM")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.nomeProduto)
+            @Html.DisplayName("NOME")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.funcaoProduto.funcaoProduto1)
+            @Html.DisplayName("FUNÇÃO")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.status.status1)
+            @Html.DisplayName("STATUS")
         </th>
         <th></th>
     </tr>
@@ -43,9 +43,9 @@
             @Html.DisplayFor(modelItem => item.status.status1)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idProduto }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idProduto }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idProduto })
+            @Html.ActionLink("Editar", "Edit", new { id=item.idProduto }) |
+            @Html.ActionLink("Detailhes", "Details", new { id=item.idProduto }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.idProduto })
         </td>
     </tr>
 }

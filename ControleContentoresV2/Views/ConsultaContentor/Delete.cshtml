@@ -1,14 +1,17 @@
 ﻿@model ControleContentoresV2.Models.movimentacao
 
 @{
-    ViewBag.Title = "Delete";
+
+    var rt = Model.rt_load;
+    ViewBag.Title = "Deletar RT " + rt;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Apagar registro</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Deseja realmente apagar o registro de movimentação da RT @rt?</h3>
 <div>
+    <!--
     <h4>movimentacao</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -92,14 +95,14 @@
             @Html.DisplayFor(model => model.volume.idVolume)
         </dd>
 
-    </dl>
+    </dl> -->
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Apagar" class="btn btn-default" /> |
+            @Html.ActionLink("Retornar para lista", "Index")
         </div>
     }
 </div>

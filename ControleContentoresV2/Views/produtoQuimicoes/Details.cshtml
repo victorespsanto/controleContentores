@@ -5,14 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
 
 <div>
-    <h4>produtoQuimico</h4>
+    <h4>Produto Químico</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.nmProduto)
+            @Html.DisplayName("NM")
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.nomeProduto)
+            @Html.DisplayName("Nome")
         </dt>
 
         <dd>
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.funcaoProduto.funcaoProduto1)
+            @Html.DisplayName("Função")
         </dt>
 
         <dd>
@@ -36,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.status.status1)
+            @Html.DisplayName("Status")
         </dt>
 
         <dd>
@@ -46,6 +46,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idProduto }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.idProduto }) |
+    @Html.ActionLink("Retornar à lista", "Index")
 </p>

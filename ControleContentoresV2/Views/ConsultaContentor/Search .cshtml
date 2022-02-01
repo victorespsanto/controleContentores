@@ -1,0 +1,94 @@
+﻿@model IEnumerable<ControleContentoresV2.Models.movimentacao>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Contentores movimentados</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("RT LOAD")
+        </th>
+        <th>
+            @Html.DisplayName("DT LOAD")
+        </th>
+        <th>
+            @Html.DisplayName("ID")
+        </th>
+        <th>
+            @Html.DisplayName("PRODUTO QUÍMICO")
+        </th>
+        <th>
+            @Html.DisplayName("SITUAÇÃO")
+        </th>
+
+        <th>
+            @Html.DisplayName("DT USO")
+        </th>
+        <th>
+            @Html.DisplayName("RT BACKLOAD")
+        </th>
+        <th>
+            @Html.DisplayName("DT BACKLOAD")
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.rt_load)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.dt_load).ToString().AsDateTime().ToString("dd/MM/yyyy")
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.id_embalagem)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.produtoQuimico.nomeProduto)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.situacao.situacao1)
+    </td>   
+    <td>
+        @if (item.dt_uso != null) 
+        { 
+         @Html.DisplayFor(modelItem => item.dt_uso).ToString().AsDateTime().ToString("dd/MM/yyyy")
+        }
+    </td>    
+    <td>
+        @Html.DisplayFor(modelItem => item.rt_backload)
+    </td>
+    <td>
+        @if (item.dt_backload != null)
+        {
+            @Html.DisplayFor(modelItem => item.dt_backload).ToString().AsDateTime().ToString("dd/MM/yyyy")
+        }
+    </td>
+
+
+    @if (Session["PerfilUsuario"].ToString() == "ADMINISTRADOR")
+    {
+
+        <td>
+            @Html.ActionLink(" ", "Edit", new { id = item.id }, new { @class = "glyphicon glyphicon-pencil", style = "color: white; margin: 0 8px 0 8px;", title = "Editar" }) |
+            @Html.ActionLink(" ", "Details", new { id = item.id }, new { @class = "glyphicon glyphicon-th-list", style = "color: white; margin: 0 8px 0 8px;", title = "Detalhes" }) |
+            @Html.ActionLink(" ", "Delete", new { id = item.id }, new { @class = "glyphicon glyphicon-trash", style = "color: white; margin: 0 8px 0 8px;", title = "Apagar" })
+        </td>
+    }
+    else
+    {
+        <td>
+            @Html.ActionLink(" ", "Details", new { id = item.id }, new { @class = "glyphicon glyphicon-th-list", style = "color: white; margin: 0 8px 0 8px;", title = "Editar" })
+        </td>
+    }
+</tr>
+}
+
+</table>

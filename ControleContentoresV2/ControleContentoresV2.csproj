@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ConsultaContentorController.cs" />
+    <Compile Include="Controllers\EmprestarContentorController.cs" />
     <Compile Include="Controllers\EsgotarContentorController.cs" />
     <Compile Include="Controllers\funcaoProdutoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -291,6 +292,8 @@
     <Content Include="Views\ConsultaContentor\Details.cshtml" />
     <Content Include="Views\ConsultaContentor\Edit.cshtml" />
     <Content Include="Views\ConsultaContentor\Index.cshtml" />
+    <Content Include="Views\EmprestarContentor\Edit.cshtml" />
+    <Content Include="Views\ConsultaContentor\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

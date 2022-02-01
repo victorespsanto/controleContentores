@@ -7,54 +7,6 @@
 
 <h2>Contentores movimentados</h2>
 
-<script>
-    function testarScript() {
-        var conteudo_busca = document.forms["form_busca"].busca.value;
-
-        if (conteudo_busca == "") {
-            alert("Necessário preencher o campo corretamente!");
-            return;
-        }
-    }
-
-    function confirmar_deletar
-</script>
-
-<form asp-controller="ConsultaContentor" asp-action="Index" name="form_busca">
-    <p>
-        <input type="text" name="busca" placeholder="Informe um parâmetro de pesquisa" style="color: black; width: 350px;" autocomplete="off">
-        <input type="radio" name="condicao" id="cheio" value="CHEIO" style="margin: 0 0 0 10px;">
-        <label for="cheio">CHEIO</label>
-        <input type="radio" name="condicao" id="vazio" value="VAZIO" style="margin: 0 0 0 10px;">
-        <label for="vazio">VAZIO</label>
-        <input type="radio" name="condicao" id="devolvido" value="DEVOLVIDO" style="margin: 0 0 0 10px;">
-        <label for="devolvido">DEVOLVIDO</label>
-        <input type="radio" name="condicao" id="transbordo" value="TRANSBORDO" style="margin: 0 0 0 10px;">
-        <label for="transbordo">TRANSBORDO</label>
-
-        <input type="submit" value="Pesquisar" style="background-color: dodgerblue; margin-left: 10px;" onclick="testarScript()" >
-    </p>
-
-</form>
-
-@{ 
-    var countLine = 0;
-
-    foreach (var item in Model)
-    {
-        countLine++;
-    }
-}
-
-<div>
-    @if (countLine == 0)
-    {
-        <h3>Não há resultados para os parâmetros de pesquisa informados</h3>
-    } else
-    {
-        <h3>Retornada(s) @countLine linha(s) pesquisada(s)</h3>
-    }
-</div>
 
 <table class="table">
     <tr>
@@ -87,7 +39,6 @@
         <th></th>
     </tr>
 
-
     @foreach (var item in Model)
     {
         <tr>
@@ -107,21 +58,14 @@
                 @Html.DisplayFor(modelItem => item.situacao.situacao1)
             </td>
             <td>
-                @if (item.dt_uso != null)
+                @if (item.dt_uso is null)
                 {
-                    if (item.situacao.idSituacao == 3)
-                    {
-                        @Html.Display("--")
-                    }
-                    else
-                    {
-                        @Html.DisplayFor(modelItem => item.dt_uso).ToString().AsDateTime().ToString("dd/MM/yyyy")
-
-                    }
-
+                    @Html.DisplayFor(modelItem => item.dt_uso).ToString().AsDateTime().ToString("dd/MM/yyyy")
+                } else
+                {
+                    @Html.Display("--");
                 }
-
-                </td>
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.rt_backload)
             </td>
@@ -134,9 +78,10 @@
 
 
             @if (Session["PerfilUsuario"].ToString() == "ADMINISTRADOR")
-            {                
+            {
+
                 <td>
-                    @Html.ActionLink(" ", "Edit", new { id = item.id }, new { @class = "glyphicon glyphicon-pencil", style = "color: white; margin: 0 8px 0 8px;", title = "Editar" }) | 
+                    @Html.ActionLink(" ", "Edit", new { id = item.id }, new { @class = "glyphicon glyphicon-pencil", style = "color: white; margin: 0 8px 0 8px;", title = "Editar" }) |
                     @Html.ActionLink(" ", "Details", new { id = item.id }, new { @class = "glyphicon glyphicon-th-list", style = "color: white; margin: 0 8px 0 8px;", title = "Detalhes" }) |
                     @Html.ActionLink(" ", "Delete", new { id = item.id }, new { @class = "glyphicon glyphicon-trash", style = "color: white; margin: 0 8px 0 8px;", title = "Apagar" })
                 </td>
@@ -151,3 +96,5 @@
     }
 
 </table>
+
+

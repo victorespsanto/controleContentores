@@ -15,11 +15,56 @@ namespace ControleContentoresV2.Controllers
         private ControleContentoresEntities db = new ControleContentoresEntities();
 
         // GET: ConsultaContentor
-        public ActionResult Index()
+        public ActionResult Index(String busca, String condicao)
         {
-            var movimentacao = db.movimentacao.Include(m => m.produtoQuimico).Include(m => m.situacao).Include(m => m.volume).OrderBy(m => m.dt_load);
-            return View(movimentacao.ToList());
-        }
+            
+            if (busca != null & condicao == null)
+            {
+                busca = busca.Trim();
+                var movimentacao = db.movimentacao.Include(m => m.produtoQuimico).Include(m => m.situacao).Include(m => m.volume).OrderBy(m => m.dt_load)
+                    .Where(m => m.rt_load.Contains(busca)
+                        || m.rt_backload.Contains(busca)
+                        || m.produtoQuimico.nomeProduto.Contains(busca)
+                        || m.id_embalagem.Contains(busca)
+                        || m.situacao.situacao1.Contains(busca));
+
+                return View(movimentacao.ToList());
+
+            } 
+
+            if (busca != null & condicao != null)
+            {
+                busca = busca.Trim();
+                condicao = condicao.Trim();
+                var movimentacao = db.movimentacao.Include(m => m.produtoQuimico).Include(m => m.situacao).Include(m => m.volume).OrderBy(m => m.dt_load)
+                    .Where(m => m.situacao.situacao1.Contains(condicao)
+                        && m.produtoQuimico.nomeProduto.Contains(busca));
+                        
+
+                return View(movimentacao.ToList());
+            }
+
+            
+            if (busca == null & condicao == null)
+            {
+               
+                var movimentacao = db.movimentacao.Include(m => m.produtoQuimico).Include(m => m.situacao).Include(m => m.volume).OrderBy(m => m.dt_load);                  
+
+                return View(movimentacao.ToList());
+            } else
+            {
+                var movimentacao = db.movimentacao.Include(m => m.produtoQuimico).Include(m => m.situacao).Include(m => m.volume).OrderBy(m => m.dt_load);
+
+                return View(movimentacao.ToList());
+
+            }
+           
+
+
+        } 
+         
+        
+
 
         // GET: ConsultaContentor/Details/5
         public ActionResult Details(int? id)
@@ -41,7 +86,7 @@ namespace ControleContentoresV2.Controllers
         {
             ViewBag.idProduto = new SelectList(db.produtoQuimico, "idProduto", "nomeProduto");
             ViewBag.idSituacao = new SelectList(db.situacao, "idSituacao", "situacao1");
-            ViewBag.idVolume = new SelectList(db.volume, "idVolume", "idVolume");
+            ViewBag.idVolume = new SelectList(db.volume, "idVolume", "qtdeVolume");
             return View();
         }
 
@@ -61,7 +106,7 @@ namespace ControleContentoresV2.Controllers
 
             ViewBag.idProduto = new SelectList(db.produtoQuimico, "idProduto", "nomeProduto", movimentacao.idProduto);
             ViewBag.idSituacao = new SelectList(db.situacao, "idSituacao", "situacao1", movimentacao.idSituacao);
-            ViewBag.idVolume = new SelectList(db.volume, "idVolume", "idVolume", movimentacao.idVolume);
+            ViewBag.idVolume = new SelectList(db.volume, "idVolume", "qtdeVolume", movimentacao.idVolume);
             return View(movimentacao);
         }
 
@@ -79,7 +124,7 @@ namespace ControleContentoresV2.Controllers
             }
             ViewBag.idProduto = new SelectList(db.produtoQuimico, "idProduto", "nomeProduto", movimentacao.idProduto);
             ViewBag.idSituacao = new SelectList(db.situacao, "idSituacao", "situacao1", movimentacao.idSituacao);
-            ViewBag.idVolume = new SelectList(db.volume, "idVolume", "idVolume", movimentacao.idVolume);
+            ViewBag.idVolume = new SelectList(db.volume, "idVolume", "qtdeVolume", movimentacao.idVolume);
             return View(movimentacao);
         }
 
@@ -98,7 +143,7 @@ namespace ControleContentoresV2.Controllers
             }
             ViewBag.idProduto = new SelectList(db.produtoQuimico, "idProduto", "nomeProduto", movimentacao.idProduto);
             ViewBag.idSituacao = new SelectList(db.situacao, "idSituacao", "situacao1", movimentacao.idSituacao);
-            ViewBag.idVolume = new SelectList(db.volume, "idVolume", "idVolume", movimentacao.idVolume);
+            ViewBag.idVolume = new SelectList(db.volume, "idVolume", "qtdeVolume", movimentacao.idVolume);
             return View(movimentacao);
         }
 

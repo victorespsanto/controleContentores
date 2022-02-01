@@ -1,24 +1,22 @@
 ﻿@model ControleContentoresV2.Models.movimentacao
 
-
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Retorno de contentor</h2>
-
+<h2>Transferência de Produto Químico</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-       
+        <h4 style="display: none;">movimentacao</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.id)
-        
+
         <div class="form-group" style="display: none;">
             @Html.LabelFor(model => model.rt_load, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -59,24 +57,25 @@
             </div>
         </div>
 
-        <div class="form-group" style="display: none;" >
+        <div class="form-group" style="display: none;">
             @Html.LabelFor(model => model.idSituacao, "idSituacao", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.idSituacao, new { htmlAttributes = new { @class = "form-control" , Value = 4} })
+                @Html.EditorFor(model => model.idSituacao, new { htmlAttributes = new { @class = "form-control", Value = 3 } })
                 @Html.ValidationMessageFor(model => model.idSituacao, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group" style="display: none;">
-            @Html.LabelFor(model => model.dt_uso, htmlAttributes: new { @class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.dt_uso, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.dt_uso, new { htmlAttributes = new { @class = "form-control", Value = Model.dt_uso.ToString().AsDateTime().ToString("yyyy-MM-dd") } })
                 @Html.ValidationMessageFor(model => model.dt_uso, "", new { @class = "text-danger" })
             </div>
         </div>
 
+
         <div class="form-group">
-            @Html.Label("RT DE  BACKLOAD", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("RT DE  ENVIO", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.rt_backload, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.rt_backload, "", new { @class = "text-danger" })
@@ -84,9 +83,9 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("DATA DE BACKLOAD", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("DATA DE ENVIO", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.dt_backload, new { htmlAttributes = new { @class = "form-control", type ="date" } })
+                @Html.EditorFor(model => model.dt_backload, new { htmlAttributes = new { @class = "form-control", type = "date"/*, style="vertical-align: middle;"*/} })
                 @Html.ValidationMessageFor(model => model.dt_backload, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -110,6 +109,7 @@
 <div>
     @Html.ActionLink("Retornar para tela inicial", "../telaInicial/Index")
 </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
