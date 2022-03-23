@@ -94,7 +94,7 @@ namespace ControleContentoresV2.Controllers
             {
                 db.Entry(movimentacao).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("../Views/telaInicial");
+                return RedirectToAction("../telaInicial");
             }
             ViewBag.idProduto = new SelectList(db.produtoQuimico, "idProduto", "nomeProduto", movimentacao.idProduto);
             ViewBag.idSituacao = new SelectList(db.situacao, "idSituacao", "situacao1", movimentacao.idSituacao);
